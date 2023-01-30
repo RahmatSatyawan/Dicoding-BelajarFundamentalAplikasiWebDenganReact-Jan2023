@@ -1,21 +1,30 @@
+:root {
+  --primary: #05989e;
+  --primary-variant: #3700b3;
+  --secondary: #121212;
+  --tersier: #ffffff;
+  --grey: #c7c7c7;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* *, *::before, *::after {
-  box-sizing: border-box;
-} */
-
 body {
-  font-family: "Inter", sans-serif;
-  background-color: #282c34;
-  color: white;
+  font-family: "Inter", "Lato" sans-serif;
+  background-color: var(--tersier);
+  color: var(--primary);
   max-width: 1200px;
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary);
 }
 
 input,
@@ -25,7 +34,8 @@ textarea {
   font-family: "Inter", sans-serif;
   background-color: transparent;
   color: white;
-  border: 1px solid #05989e;
+  color: #05989e;
+  border: 1px solid white;
   transition: 0.6s;
   border-radius: 4px;
 }
@@ -34,7 +44,9 @@ input:focus,
 textarea:focus {
   outline: none;
   border: 1px solid white;
+  border: 1px solid grey;
   background: #05989e;
+  background: white;
 }
 
 input::placeholder,
@@ -49,12 +61,13 @@ header {
   justify-content: center;
   padding: 4px 16px;
   border-bottom: 1px solid #05989e;
+  background: #05989e;
 }
 
 header h1 {
   margin: 8px 0;
   flex: 1;
-  color: #05989e;
+  color: white;
 }
 
 main {
@@ -66,24 +79,21 @@ main {
 main h2 {
   font-weight: normal;
   margin: 16px 0;
+  color: #05989e;
 }
 
 .note-input {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 1000px;
   margin-bottom: 48px;
+  /* background: #05989e; */
 }
 
 .note-input input,
 .note-input textarea {
   display: block;
   width: 100%;
-}
-
-.char-limit {
-  font-size: 14px;
-  text-align: right;
-  color: #aaa;
+  border: 1px solid #05989e;
 }
 
 .input-title {
@@ -91,7 +101,22 @@ main h2 {
 }
 
 .input-body {
-  min-height: 175px;
+  min-height: 375px;
+}
+
+.input-archived {
+  display: inline-flex;
+}
+
+.input-archived input {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.input-archived p {
+  margin-top: 6px;
+  flex: 1;
+  font-weight: bold;
 }
 
 .note-input button {
@@ -100,14 +125,14 @@ main h2 {
   padding: 8px;
   background-color: transparent;
   font-family: "Inter", sans-serif;
-  color: white;
+  color: #05989e;
   border: 1px solid #05989e;
   border-radius: 4px;
-  /* font-weight: bold; */
+  font-weight: bold;
   cursor: pointer;
 }
 
-.active-note {
+.list-note {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(min-content, max-content);
@@ -138,17 +163,19 @@ main h2 {
   overflow: hidden;
   white-space: nowrap;
   margin-bottom: 4px;
+  color: var(--primary);
 }
 
 .item-date {
   font-size: 12px;
   margin-bottom: 8px;
-  color: #aaa;
+  color: var(--grey);
 }
 
 .item-body {
   font-size: 14px;
   text-align: justify;
+  min-height: 150px;
 }
 
 .action {
@@ -157,8 +184,8 @@ main h2 {
 
 .action-button {
   flex: 1;
-  /* display: block; */
-  /* width: 100%; */
+  display: block;
+  width: 100%;
   background-color: transparent;
   border: 0;
   border-top: 1px solid #05989e;
@@ -168,7 +195,7 @@ main h2 {
   cursor: pointer;
   min-width: 50px;
   transition: 0.5s;
-  color: yellow;
+  color: #05989e;
 }
 
 .border-right {
@@ -198,26 +225,40 @@ button:focus {
 }
 
 footer {
-  position:fixed;
+  position: absolute;
   bottom: 0;
+  width: 100%;
+  background-color: #05989e;
+
+  height: 2.5rem;
   width: 100%;
   text-align: center;
   padding: 16px;
-  border-top: 1px solid #05989e;
+  border-top: 1px solid #05989e !important;
   font-size: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+footer p {
+  color: white;
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 500px) {
-  .active-note,
+  .list-note,
   .archive-note {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .active-note,
+  .list-note,
   .archive-note {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .search input {
@@ -226,8 +267,8 @@ footer {
 }
 
 @media only screen and (min-width: 1000px) {
-  .active-note,
+  .list-note,
   .archive-note {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }

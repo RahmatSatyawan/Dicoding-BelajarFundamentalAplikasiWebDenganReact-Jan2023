@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import HeaderPage from "../organisms/HeaderPage";
-import MainPage from "../organisms/MainPage";
-import FooterPage from "../organisms/FooterPage";
+import HeaderPage from "../../organisms/HeaderSec";
+import MainPage from "../../organisms/MainSec";
+import FooterPage from "../../organisms/FooterSec";
 
-import { getInitialData } from "../../utils/data";
+import { getInitialData } from "../../../utils/data";
 
 
 export class PageNote extends Component {
@@ -46,6 +46,7 @@ export class PageNote extends Component {
     this.setState({ dataNotes });
   }
 
+  
   onArchivedHandler(id) {
     const dataNotes = this.state.dataNotes.map((note) => {
       if (note.id === id) {

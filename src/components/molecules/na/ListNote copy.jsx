@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import CardNote from "../atom/CardNote";
-import EmptyMessage from "../atom/EmptyMessage";
+import CardNote from "../../atom/na/CardNote";
+import EmptyMessage from "../../atom/EmptyMessage";
 
-export class ArchiveNote extends Component {
+export class ListNote extends Component {
   render() {
     const dataNotes = this.props.dataNotes;
-    const dataNotesArchived = dataNotes.filter((note) => {
-      return note.archived === true;
+    const dataNotesActive = dataNotes.filter((note) => {
+      return note.archived === false;
     });
-
     const onDelete = this.props.onDelete;
     const onArchive = this.props.onArchive;
 
     return (
       <>
-        <h2>Archived Note</h2>
-        {dataNotesArchived.length > 0 ? (
+        {dataNotesActive.length > 0 ? (
           <div className="active-note">
-            {dataNotesArchived.map((note) => (
+            {dataNotesActive.map((note) => (
               <CardNote
                 {...note}
                 onDelete={onDelete}
@@ -34,4 +32,4 @@ export class ArchiveNote extends Component {
   }
 }
 
-export default ArchiveNote;
+export default ListNote;

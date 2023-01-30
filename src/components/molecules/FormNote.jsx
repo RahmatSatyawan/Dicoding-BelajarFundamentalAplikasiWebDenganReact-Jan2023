@@ -1,19 +1,22 @@
 import React, { Component } from "react";
-
+import PropTypes from "prop-types";
 export class FormNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       title: "",
       body: "",
-      createdAt: "",
       archived: false,
-      restlength: 50,
+      createdAt: "",
     };
 
     // binding
     this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
     this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
+    this.onArchivedChangeEventHandler =
+      this.onArchivedChangeEventHandler.bind(this);
+
     this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
 
@@ -21,7 +24,6 @@ export class FormNote extends Component {
     this.setState(() => {
       return {
         title: event.target.value,
-        restlength: 50 - event.target.value.length,
       };
     });
   }
@@ -34,6 +36,14 @@ export class FormNote extends Component {
     });
   }
 
+  onArchivedChangeEventHandler(event) {
+    this.setState(() => {
+      return {
+        archived: !this.state.archived,
+      };
+    });
+  }
+
   onSubmitEventHandler(event) {
     event.preventDefault();
     this.props.addNote(this.state);
@@ -41,14 +51,14 @@ export class FormNote extends Component {
       return {
         title: "",
         body: "",
-        restlength: 50,
+        archived: false,
       };
     });
 
     const message = `
-      Name: ${this.state.title}
-      Email: ${this.state.body}
-      Sisa Karakter: ${this.state.restlength}
+      Title: ${this.state.title}
+      Body: ${this.state.body}
+      Archived: ${this.state.archived}
 
       Data berhasil ditambahkan.
     `;
@@ -59,9 +69,7 @@ export class FormNote extends Component {
   render() {
     return (
       <div className="note-input">
-        <h2>Buat Catatan</h2>
         <form onSubmit={this.onSubmitEventHandler}>
-          <p className="char-limit">Sisa karakter: {this.state.restlength}</p>
           <input
             className="input-title"
             type="text"
@@ -76,11 +84,28 @@ export class FormNote extends Component {
             value={this.state.body}
             onChange={this.onBodyChangeEventHandler}
           />
+          <label className="input-archived">
+            <input
+              type="checkbox"
+              value={this.state.archived}
+              checked={this.state.archived}
+              onChange={this.onArchivedChangeEventHandler}
+            />
+            <p>Archived</p>
+          </label>
           <button type="submit">Simpan</button>
         </form>
       </div>
     );
   }
 }
+
+FormNote.propTypes = {
+  addNote: PropTypes.func,
+  onArchivedChangeEventHandler: PropTypes.func,
+  title: PropTypes.string,
+  body: PropTypes.string,
+  archived: PropTypes.bool,
+};
 
 export default FormNote;

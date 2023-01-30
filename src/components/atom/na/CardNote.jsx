@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { showFormattedDate } from "../../utils/data";
+import DetailPage from "../../page/DetailPage";
 
 export class CardNote extends Component {
   render() {
@@ -11,10 +13,13 @@ export class CardNote extends Component {
     return (
       <div className="note-item">
         <div className="content">
-          <h3 className="item-title">{title}</h3>
-          <p className="item-date">{showFormattedDate(createdAt)}</p>
-          <p className="item-body">{body}</p>
+          <Link to={`/notes/${id}`}>
+            <h3 className="item-title">{title}</h3>
+            <p className="item-date">{showFormattedDate(createdAt)}</p>
+            <p className="item-body">{body}</p>
+          </Link>
         </div>
+
         <div className="action">
           <button
             className="action-button border-right delete"
