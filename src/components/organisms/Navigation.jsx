@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import "../../styles/styleForNav.css";
 
@@ -31,12 +30,6 @@ const Navigation = () => {
       </NavLink>
     </div>
   );
-};
-
-Navigation.propTypes = {
-  isActive: PropTypes.bool,
-  activeClass: PropTypes.string,
-  inactiveClass: PropTypes.string,
 };
 
 export default Navigation;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 export class FormNote extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ export class FormNote extends Component {
   onBodyChangeEventHandler(event) {
     this.setState(() => {
       return {
-        body: event.target.value,
+        body: event.target.innerHTML,
       };
     });
   }
@@ -77,12 +78,12 @@ export class FormNote extends Component {
             value={this.state.title}
             onChange={this.onTitleChangeEventHandler}
           />
-          <textarea
+          <div
             className="input-body"
-            type="text"
-            placeholder="Isi Catatan..."
+            data-placeholder="Isi Catatan..."
             value={this.state.body}
-            onChange={this.onBodyChangeEventHandler}
+            onInput={this.onBodyChangeEventHandler}
+            contentEditable
           />
           <label className="input-archived">
             <input
@@ -101,11 +102,7 @@ export class FormNote extends Component {
 }
 
 FormNote.propTypes = {
-  addNote: PropTypes.func,
-  onArchivedChangeEventHandler: PropTypes.func,
-  title: PropTypes.string,
-  body: PropTypes.string,
-  archived: PropTypes.bool,
-};
+  addNote: PropTypes.func
+}
 
 export default FormNote;

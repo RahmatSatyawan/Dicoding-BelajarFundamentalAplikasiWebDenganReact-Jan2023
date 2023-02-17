@@ -1,11 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { addNote } from "../../utils/local-data";
 import FormNote from "../molecules/FormNote";
+import { useNavigate } from "react-router-dom";
 
 function AddPage() {
+  const navigate = useNavigate();
   function onAddNoteHandler(note) {
     addNote(note);
+    navigate("/");
   }
   return (
     <main>
@@ -14,11 +16,5 @@ function AddPage() {
     </main>
   );
 }
-
-AddPage.propTypes = {
-  getActiveNotes: PropTypes.func,
-  notesActive: PropTypes.array,
-  dataNotes: PropTypes.array,
-};
 
 export default AddPage;

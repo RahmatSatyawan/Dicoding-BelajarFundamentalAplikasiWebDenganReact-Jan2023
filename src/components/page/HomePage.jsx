@@ -65,9 +65,7 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  getActiveNotes: PropTypes.func,
-  notesActive: PropTypes.array,
-  dataNotes: PropTypes.array,
+  keyword: PropTypes.string,
 };
 
 export default HomePage;

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
-import PropTypes from "prop-types";
 
 import HomePage from "./HomePage";
 import AddPage from "./AddPage";
@@ -48,12 +47,5 @@ export class NotesApp extends Component {
     );
   }
 }
-
-NotesApp.propTypes = {
-  path: PropTypes.string,
-  element: PropTypes.element,
-  keyword: PropTypes.string,
-  data: PropTypes.string,
-};
 
 export default NotesApp;

@@ -21,6 +21,10 @@ function HeaderSec(props) {
   );
 }
 
+HeaderSec.propTypes = {
+  receivedData: PropTypes.any
+}
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -61,12 +65,10 @@ class Header extends Component {
   }
 }
 
-HeaderSec.propTypes = {
-  receivedData: PropTypes.func,
-  keywordChange: PropTypes.func,
-  keyword: PropTypes.string,
-  myFunct: PropTypes.func,
+Header.propTypes = {
   defaultKeyword: PropTypes.string,
-};
+  keywordChange: PropTypes.func,
+  myFunct: PropTypes.func
+}
 
 export default HeaderSec;

@@ -66,13 +66,7 @@ class ArchivedPage extends Component {
 }
 
 ArchivedPage.propTypes = {
-  getActiveNotes: PropTypes.func,
-  notesActive: PropTypes.array,
-  dataNotes: PropTypes.array,
-  onDelete: PropTypes.func,
-  onArchive: PropTypes.func,
-  id: PropTypes.string,
-  keyword: PropTypes.string,
-};
+  keyword: PropTypes.string
+}
 
 export default ArchivedPage;

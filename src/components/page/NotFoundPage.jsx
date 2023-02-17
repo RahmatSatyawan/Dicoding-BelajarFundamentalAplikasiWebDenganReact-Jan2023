@@ -1,6 +1,5 @@
 import React from "react";
 import "../../styles/styleNotFoundPage.css";
-import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
 import HomePage from "./HomePage";
 
@@ -29,12 +28,6 @@ const NotFoundPage = () => {
       </div>
     </>
   );
-};
-
-NotFoundPage.propTypes = {
-  location: PropTypes.object,
-  pathname: PropTypes.string,
-  href: PropTypes.string,
 };
 
 export default NotFoundPage;
